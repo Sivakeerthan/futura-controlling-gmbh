@@ -1,0 +1,49 @@
+@import "../common/mat-theme.scss";
+
+div{
+ overflow: hidden;
+}
+
+.entry-screen{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    //pulsing animation
+    background-color: $primary;
+    animation-name: color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.logo-div{
+    cursor: pointer;
+    outline: none;
+}
+
+.logo{
+    max-width: 100%;
+}
+.mat-button{
+    float:left;
+}
+.mat-divider{
+    float:left;
+    margin: 0.5em 0;
+    height: 1.5em;
+    border-width: 2px;
+    border-color: white;
+}
+
+@keyframes color {
+    0% {
+      background-color: $primary;
+    }
+    50% {
+      background-color: mat-color($md-primarypalette,800);
+    }
+    100% {
+      background-color: $primary;
+    }
+  }

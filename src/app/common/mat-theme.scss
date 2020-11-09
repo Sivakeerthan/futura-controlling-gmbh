@@ -1,0 +1,135 @@
+@import '~@angular/material/theming';
+
+$md-primarypalette: (
+    50 : #ffebe4,
+    100 : #ffcdbd,
+    200 : #ffab91,
+    300 : #ff8964,
+    400 : #ff7043,
+    500 : #ff5722,
+    600 : #ff4f1e,
+    700 : #ff4619,
+    800 : #ff3c14,
+    900 : #ff2c0c,
+    A100 : #ffffff,
+    A200 : #fff7f6,
+    A400 : #ffc9c3,
+    A700 : #ffb2a9,
+    contrast: (
+        50 : #424242,
+        100 : #424242,
+        200 : #424242,
+        300 : #424242,
+        400 : #424242,
+        500 : #424242,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #424242,
+        A200 : #424242,
+        A400 : #424242,
+        A700 : #424242
+    )
+);
+
+$md-accentpalette: (
+    50 : #e0f6f0,
+    100 : #b3e8da,
+    200 : #80d9c1,
+    300 : #4dcaa8,
+    400 : #26be96,
+    500 : #00b383,
+    600 : #00ac7b,
+    700 : #00a370,
+    800 : #009a66,
+    900 : #008b53,
+    A100 : #b7ffdd,
+    A200 : #84ffc6,
+    A400 : #51ffae,
+    A700 : #37ffa2,
+    contrast: (
+        50 : #1B1B1B,
+        100 : #1B1B1B,
+        200 : #1B1B1B,
+        300 : #1B1B1B,
+        400 : #1B1B1B,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #1B1B1B,
+        A200 : #1B1B1B,
+        A400 : #1B1B1B,
+        A700 : #1B1B1B,
+    )
+);
+
+$md-errorpalette: (
+    50 : #f8e4e0,
+    100 : #edbbb3,
+    200 : #e28e80,
+    300 : #d6604d,
+    400 : #cd3e26,
+    500 : #c41c00,
+    600 : #be1900,
+    700 : #b61400,
+    800 : #af1100,
+    900 : #a20900,
+    A100 : #ffcdcc,
+    A200 : #ff9b99,
+    A400 : #ff6966,
+    A700 : #ff504d,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$default-primary: mat-palette($md-primarypalette);
+$default-accent:  mat-palette($md-accentpalette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$default-warn:    mat-palette($md-errorpalette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as `color` or `typography`.
+$default-theme: mat-light-theme((
+  color: (
+    primary: $default-primary,
+    accent: $default-accent,
+    warn: $default-warn,  
+  )
+));
+
+// Sass color vars
+$primary: mat-color($default-primary);
+$accent: mat-color($default-accent);
+$warn: mat-color($default-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($default-theme);

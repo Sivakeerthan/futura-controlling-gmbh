@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div class="col-xsm">
+        <div matRipple [routerLink]="'/home'" id="logo">
+          <img src="assets\futura-controlling-GmbH-cmyk.png" alt="FuturaControllingGmbh"/>
+        </div>
+      </div>
+      <div class="col">
+        <div [@btnToggled]='toggled' class="nav-items float-md-left">
+          <button mat-button [routerLink]="'/dienste'">Unsere Dienste</button>
+          <button mat-button [routerLink]="'/team'">Das Team</button>
+          <button mat-button [routerLink]="'/kontakt'">Kontakt</button>
+        </div>
+        <div class="float-right">        
+          <button mat-button (click)="toggleNav()">
+              <mat-icon *ngIf="!toggled">menu</mat-icon>
+              <mat-icon *ngIf="toggled">close</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar-row>
+</mat-toolbar>
