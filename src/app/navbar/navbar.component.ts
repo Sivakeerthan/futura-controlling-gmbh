@@ -8,13 +8,15 @@ import { Component, OnInit } from '@angular/core';
   animations: [
     trigger('btnToggled',[
       state('false', style({
+        // 'display':'none',
         'opacity': '0%'
        })),
       state('true', style({
+        // 'display':'block',
         'opacity': '100%'
        })),
-      transition('false => true', animate('100ms ease-in')),
-      transition('true => false', animate('100ms ease-out'))
+      transition('false => true', animate('300ms ease-in')),
+      transition('true => false', animate('200ms ease-out'))
     ])
   ]
 })
