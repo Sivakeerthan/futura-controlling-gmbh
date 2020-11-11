@@ -1,9 +1,14 @@
-div{
-    color: black;
-    li{
-        list-style: none;
+.team{
+    height: 100vh;
+    div{
+        color: black;
+        li{
+            list-style: none;
+        }
     }
-}
-.mat-card{
-    max-width: 300px;
+    .mat-card{
+        max-width: 300px;
+        position: absolute;
+        top: 10px;
+    }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit ,AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { DynamicHeaderService } from './common/dynamic-header.service';
-import { slideInAnimation } from './common/animations';
+import { simpleFadeAnimation, slideInAnimation } from './common/animations';
 import { MailService } from './common/mail.service';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [slideInAnimation]
+  animations: [slideInAnimation, simpleFadeAnimation]
 })
 export class AppComponent implements OnInit, AfterViewInit {
   public title = 'futura-controlling-gmbh';

@@ -1,5 +1,5 @@
-<mat-grid-list cols="3" rowHeight="4:5">
-        <mat-grid-tile *ngFor="let employee of employees">
+<mat-grid-list class="team" *ngIf="employees != null" [cols]="employees.length" rowHeight="1:2">
+        <mat-grid-tile colspan="1" *ngFor="let employee of employees">
             <mat-card>
                 <mat-card-header>
                     <mat-card-title>{{employee.FirstName}} {{employee.LastName}}</mat-card-title>

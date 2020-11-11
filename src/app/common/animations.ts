@@ -15,22 +15,22 @@ export const slideInAnimation =
           top: 0,
           left: 0,
           width: '100%',
-          overflow: 'hidden auto' 
+          overflow: 'hidden' 
         })
-      ]),
+      ], {optional: true}),
       query(':enter', [
         style({ left: '100%' })
-      ]),
-      query(':leave', animateChild()),
+      ], {optional: true}),
+      query(':leave', animateChild(), {optional: true}),
       group([
         query(':leave', [
           animate('600ms ease-out', style({ left: '-100%' }))
-        ]),
+        ], {optional: true}),
         query(':enter', [
           animate('600ms ease-out', style({ left: '0%' }))
-        ])
+        ], {optional: true})
       ]),
-      query(':enter', animateChild()),
+      query(':enter', animateChild(), {optional: true}),
     ])       
   ]);
 
@@ -41,12 +41,9 @@ export const slideInAnimation =
 /*---------------------------------------------------------------------------------*/
   export const simpleFadeAnimation =
   trigger('simpleFadeAnimation', [
-    state('in', style({opacity: 1})),
-    transition('MainPage=>*', [
-      style({opacity: 0}),
-      animate('600ms')
-    ]),
-    transition("*=>MainPage", [
-      animate('600ms', style({ opacity: 0}))
-      ])
+    state('true', style({opacity: 1})),
+    state('false', style({opacity: 0})),
+    transition('true<=>false', [
+      animate('300ms')
+    ])
   ]);

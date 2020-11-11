@@ -1,5 +1,3 @@
-@import "common/mat-theme.scss";
-
 body{    
     overflow: hidden;
     padding: 0;
@@ -11,7 +9,6 @@ body{
 #container{
     padding: 50px; 
     color: white;
-    background-color: rgba(mat-color($md-primarypalette,600),0.75);
     background-attachment: fixed;
     position: absolute;
     top: 64px;
@@ -19,19 +16,48 @@ body{
     z-index:1;
     height: 100%;
 }
-.bg{
-    background-image: url('../assets/bg.jpg');
-    background-position: center;
-    background-repeat: no-repeat; 
-    background-size: 100%;
-    background-attachment: fixed;
-    // width: 100%;
-    height: 100%;
+
+//Preload background-image
+.bg::after{
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    content: url('../assets/bg.jpg');
+}
+
+.bg-container{    
+    min-height: 150%;
+    width: auto;
+
+    overflow: hidden;    
+    z-index:-1;    
+
+    margin:0;
+    padding:0;
+
     position: relative;
     top: 64px; // start after the navbar
     left: 0;
-    z-index:-1;
-}  
+
+    .bg{            
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        right: -15px;
+        bottom: -15px;
+
+        background-image: url('../assets/bg.jpg');
+        background-position: center;
+        background-repeat: no-repeat; 
+        background-size: 150%;
+        background-attachment: fixed;
+        filter: blur(6px) contrast(50%);
+        transform: scale(1.1);
+    }   
+}
+
 
 :host ::ng-deep{
     mat-card{

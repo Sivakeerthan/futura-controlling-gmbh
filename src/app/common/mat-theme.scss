@@ -124,12 +124,21 @@ $default-theme: mat-light-theme((
   )
 ));
 
-// Sass color vars
-$primary: mat-color($default-primary);
-$accent: mat-color($default-accent);
-$warn: mat-color($default-warn);
-
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($default-theme);
+
+// Sass color vars
+$primary: mat-color($default-primary);
+$primary-dark: mat-color($md-primarypalette,800);
+$accent: mat-color($default-accent);
+$warn: mat-color($default-warn);
+
+// CSS4 vars
+:root {
+    --color-primary: #{mat-color($default-primary)};
+    --color-primary-dark: #{mat-color($md-primarypalette,800)};
+    --color-accent: #{mat-color($default-accent)};
+    --color-warn: #{mat-color($default-warn)};
+}

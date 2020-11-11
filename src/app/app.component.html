@@ -6,8 +6,12 @@
             <router-outlet #outlet="outlet"></router-outlet>
         </div>
     </div>    
-    <div class="bg col-md-12 img-responsive"></div>
+    <div class="bg-container col-md-12">
+        <div class="bg  img-fluid w-100 h-100"></div>
+    </div>
 </div>
-<ng-template #entry [@routeAnimations]="prepareRoute(outlet)">
-    <router-outlet #outlet="outlet"></router-outlet>
+<ng-template #entry>
+    <div class="h-100 w-100" [@simpleFadeAnimation]="isEntry ? true : false">
+        <router-outlet></router-outlet>
+    </div>  
 </ng-template>

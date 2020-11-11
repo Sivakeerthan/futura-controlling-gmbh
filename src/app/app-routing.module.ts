@@ -7,7 +7,7 @@ import { ServicesComponent } from './services/services.component';
 import { TeamComponent } from './team/team.component';
 
 const routes: Routes = [
-  {path: '', component: MainComponent, data: {animation: 'MainPage'}},
+  {path: '', component: MainComponent},
   {path: 'home', component: HomeComponent, data: {animation: 'HomePage'}},
   {path: 'dienste', component: ServicesComponent, data: {animation: 'ServicesPage'}},
   {path: 'lobuko', redirectTo: 'dienste/#lobuko', pathMatch: 'full'},
