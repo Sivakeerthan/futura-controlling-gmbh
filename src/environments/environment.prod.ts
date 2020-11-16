@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  jsonUrl:  "../assets/employees/employees.json"
+  jsonUrl:  "assets/employees/employees.json"
 };
