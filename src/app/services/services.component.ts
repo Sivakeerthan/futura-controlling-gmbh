@@ -11,7 +11,7 @@ export class ServicesComponent implements OnInit {
   constructor(public HeaderService: DynamicHeaderService) { }
 
   ngOnInit(): void {
-    this.HeaderService.setTitle("Unsere Dienste");
+    this.HeaderService.setTitle("Beratung & Treuhand");
   }
 
 }

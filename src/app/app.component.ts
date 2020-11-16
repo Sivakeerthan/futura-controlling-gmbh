@@ -1,41 +1,40 @@
-import { Component, OnInit ,AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { DynamicHeaderService } from './common/dynamic-header.service';
-import { simpleFadeAnimation, slideInAnimation } from './common/animations';
-import { MailService } from './common/mail.service';
-import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
+import { slideInAnimation } from './common/animations';
+import { Router, NavigationEnd, RouterOutlet, NavigationError } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [slideInAnimation, simpleFadeAnimation]
+  changeDetection: ChangeDetectionStrategy.Default,
+  animations: [slideInAnimation]
 })
 export class AppComponent implements OnInit, AfterViewInit {
   public title = 'futura-controlling-gmbh';
-  public header : string;  
-  public isEntry:boolean = false;
+  public header: string;
+  public isEntry: boolean = false;
 
   constructor(public HeaderService: DynamicHeaderService,
-              public MailService: MailService,
-              public cdr: ChangeDetectorRef,
-              private Router: Router){}
+    public cdr: ChangeDetectorRef,
+    private Router: Router) { }
 
-  ngOnInit(){
-    this.MailService.init(); 
+  ngOnInit() {
 
-    this.Router.events.subscribe(val=>{
+    this.Router.events.subscribe(val => {
       var nav = val as NavigationEnd;
-      if(nav.url != null) this.isEntry = (nav.url == '/');
-
-    }); 
+      if (nav.url != null || nav.urlAfterRedirects != null) {
+        this.isEntry = (nav.url == '/' || nav.urlAfterRedirects == '/');
+      }
+    });
   }
 
-  ngAfterViewInit(){
-    this.HeaderService.header.subscribe(val=>{
+  ngAfterViewInit() {
+    this.HeaderService.header.subscribe(val => {
       this.cdr.detectChanges();
-      setTimeout(()=>{      
-        this.header = val ;
-        },0);
+      setTimeout(() => {
+        this.header = val;
+      }, 0);
     });
 
   }

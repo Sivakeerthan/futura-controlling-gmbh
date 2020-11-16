@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DynamicHeaderService } from '../common/dynamic-header.service';
 
 @Component({
   selector: 'app-lobuko',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LobukoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private HeaderService:DynamicHeaderService) { }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void {  
+      this.HeaderService.setTitle("Lohnbuchkontrollen");
+  }
 
 }

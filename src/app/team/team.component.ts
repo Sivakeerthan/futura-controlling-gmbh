@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicHeaderService } from '../common/dynamic-header.service';
-import { Employee } from './Employee';
+import { Employee } from '../common/Employee';
+import { EmployeeService } from '../common/employee.service';
 
 @Component({
   selector: 'app-team',
@@ -11,27 +12,14 @@ export class TeamComponent implements OnInit {
 
   public employees:Employee[];
 
-  constructor(public HeaderService: DynamicHeaderService) { }
+  constructor(private HeaderService: DynamicHeaderService,
+              private EmployeeService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.HeaderService.setTitle("Das Team");
+    this.HeaderService.setTitle("Über Uns");
 
     //Build Employee List
-    this.employees = [new Employee("Bekim","Saiti","CEO",
-                                    ["Kaufmann EFZ", "Berufsmatura", "BsC BFH Betriebsökonomie"],
-                                    ["Familie","Reisen","Fussball"],
-                                    "../../assets/employees/bs.jpg"
-                                  ), 
-                      new Employee("Sonia","Ahmadi","Kundenmandante",
-                                    ["Kauffrau EFZ", "Berufsmatura"],
-                                    ["Acryl-/Ölmalerei", "Tanzen", "Fotografie & Fotobearbeitung"],
-                                    "../../assets/employees/sa.jpg"
-                                  ),
-                      new Employee("Sandy","Harbas","Kundenmandante",
-                                    ["Kaufmann EFZ"],
-                                    ["Fussball", "Familie", "Freunde"],
-                                    "../../assets/employees/sh.jpg"
-                                  )];
+    this.EmployeeService.getEmployees().subscribe(res=> this.employees = res);
   }
 
 }

@@ -5,16 +5,18 @@ import { KontaktComponent } from './kontakt/kontakt.component';
 import { HomeComponent } from './home/home.component';
 import { ServicesComponent } from './services/services.component';
 import { TeamComponent } from './team/team.component';
+import { LobukoComponent } from './lobuko/lobuko.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
   {path: 'home', component: HomeComponent, data: {animation: 'HomePage'}},
-  {path: 'dienste', component: ServicesComponent, data: {animation: 'ServicesPage'}},
-  {path: 'lobuko', redirectTo: 'dienste/#lobuko', pathMatch: 'full'},
-  {path: 'loadm', redirectTo: 'dienste/#loadm', pathMatch: 'full'},
-  {path: 'buchhaltung', redirectTo: 'dienste/#buchhaltung', pathMatch: 'full'},
-  {path: 'team', component: TeamComponent, data: {animation: 'TeamPage'}},
-  {path: 'kontakt', component: KontaktComponent, data: {animation: 'KontaktPage'}}
+  {path: 'lobuko', component: LobukoComponent, data: {animation: 'LobukoPage'}},
+  {path: 'beratung-treuhand', component: ServicesComponent, data: {animation: 'ServicesPage'}},
+  {path: 'loadm', redirectTo: 'beratung-treuhand/#loadm', pathMatch: 'full'},
+  {path: 'buchhaltung', redirectTo: 'beratung-treuhand/#buchhaltung', pathMatch: 'full'},
+  {path: 'about', component: TeamComponent, data: {animation: 'TeamPage'}},
+  {path: 'kontakt', component: KontaktComponent, data: {animation: 'KontaktPage'}},
+  {path: '**', redirectTo: '/', pathMatch: 'full'}
 ];
 
 @NgModule({

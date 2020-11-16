@@ -13,15 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {DynamicHeaderService} from './common/dynamic-header.service';
-import {MailService} from './common/mail.service';
 
 import { MainComponent } from './main/main.component';
-import { LobukoComponent } from './services/lobuko/lobuko.component';
+import { LobukoComponent } from './lobuko/lobuko.component';
 import { LoadmComponent } from './services/loadm/loadm.component';
 import { BuchhaltungComponent } from './services/buchhaltung/buchhaltung.component';
 import { KontaktComponent } from './kontakt/kontakt.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { RequestFormComponent } from './kontakt/request-form/request-form.component';
 import { HomeComponent } from './home/home.component';
 import { ServicesComponent } from './services/services.component';
 import { RouterModule } from '@angular/router';
@@ -37,7 +35,6 @@ import { TeamComponent } from './team/team.component';
     BuchhaltungComponent,
     KontaktComponent,
     NavbarComponent,
-    RequestFormComponent,
     HomeComponent,
     ServicesComponent,
     TeamComponent
@@ -55,8 +52,7 @@ import { TeamComponent } from './team/team.component';
     RouterModule
   ],
   providers: [
-    DynamicHeaderService,
-    MailService
+    DynamicHeaderService
   ],
   bootstrap: [AppComponent],
   exports:[
