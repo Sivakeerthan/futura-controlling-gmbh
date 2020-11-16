@@ -5,7 +5,7 @@
         "Position":  "Geschäftsführer/Lohnbuchkontrolleur",
         "Education": ["Kaufmann EFZ", "Berufsmatura", "BsC BFH Betriebsökonomie"],
         "Hobbies":   ["Familie","Reisen","Fussball"],
-        "ImgPath":   "../../assets/employees/bs.jpg"
+        "ImgPath":   "./assets/employees/bs.jpg"
     },
     { 
         "FirstName": "Sonia",
@@ -13,7 +13,7 @@
         "Position":  "Lohnbuchkontrolleurin",
         "Education": ["Kauffrau EFZ", "Berufsmatura"],
         "Hobbies":   ["Acryl-/Ölmalerei", "Tanzen", "Fotografie & Fotobearbeitung"],
-        "ImgPath":   "../../assets/employees/sa.jpg"
+        "ImgPath":   "./assets/employees/sa.jpg"
     },
     {                           
         "FirstName": "Sandy",
@@ -21,7 +21,7 @@
         "Position":  "Lohnbuchkontrolleur",
         "Education": ["Kaufmann EFZ"],
         "Hobbies":   ["Fussball", "Familie", "Freunde"],
-        "ImgPath":   "../../assets/employees/sh.jpg"
+        "ImgPath":   "./assets/employees/sh.jpg"
                                   
     }
 ]
