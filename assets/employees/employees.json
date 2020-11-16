@@ -21,7 +21,7 @@
         "Position":  "Lohnbuchkontrolleur",
         "Education": ["Kaufmann EFZ"],
         "Hobbies":   ["Fussball", "Familie", "Freunde"],
-        "ImgPath":   "../../../assets/employees/sh.jpg"
+        "ImgPath":   "./assets/employees/sh.jpg"
                                   
     }
 ]
