@@ -1,4 +1,4 @@
-<mat-grid-list class="team" *ngIf="employees != null" [cols]="employees.length" rowHeight="1:2">
+<mat-grid-list class="team col-md-12 h-100" *ngIf="employees != null" cols="{{breakpoint}}" rowHeight="1:1.25" (window:resize)="OnResize($event)">
         <mat-grid-tile colspan="1" *ngFor="let employee of employees">
             <mat-card>
                 <mat-card-header>
@@ -9,13 +9,13 @@
                 <mat-card-content>
                     <div class="row">
                         <div class="col-md-12">
-                            <h4>Aus-/Weiterbildung</h4>
+                            <h4 class="semibold">Aus-/Weiterbildung</h4>
                             <ul>
                                 <li *ngFor="let edu of employee.Education">{{edu}}</li>
                             </ul>
                         </div>
                         <div class="col-md-12">
-                            <h4>Hobbies</h4>
+                            <h4 class="semibold">Hobbies</h4>
                             <ul>
                                 <li *ngFor="let hobby of employee.Hobbies">{{hobby}}</li>
                             </ul>

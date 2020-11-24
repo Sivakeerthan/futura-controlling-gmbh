@@ -2,19 +2,24 @@ body{
     overflow: hidden;
     padding: 0;
 }
-.mat-headline{
+.subtitle{
     font-weight: 500; //Medium
+    position: fixed;
+    top: 10%;
 }
 
 #container{
     padding: 50px; 
     color: white;
-    background-attachment: fixed;
     position: absolute;
-    top: 64px;
+    top: 5%;
     left: 0;
     z-index:1;
-    height: 100%;
+    height: 95%;
+}
+#content{
+    margin-top: 10vh;
+    overflow: hidden;
 }
 
 //Preload background-image
@@ -28,26 +33,22 @@ body{
 }
 
 .bg-container{    
-    min-height: 150%;
-    width: auto;
-
-    overflow: hidden;    
-    z-index:-1;    
+    height:95%;
+    overflow: hidden;  
 
     margin:0;
     padding:0;
 
-    position: relative;
-    top: 64px; // start after the navbar
+    position: fixed;
+    top: 5%; // start after the navbar
     left: 0;
 
-    .bg{            
-        position: absolute;
+    .bg{           
+        position: relative;
         top: -15px;
         left: -15px;
         right: -15px;
         bottom: -15px;
-
         background-image: url('../assets/bg.jpg');
         background-position: center;
         background-repeat: no-repeat; 
@@ -55,6 +56,7 @@ body{
         background-attachment: fixed;
         filter: blur(6px) contrast(50%);
         transform: scale(1.1);
+        z-index:-1;  
     }   
 }
 
@@ -62,7 +64,8 @@ body{
 :host ::ng-deep{
     mat-card{
         float: left;
-        margin: 0 105px 10px 0;
+        margin: 0 105px 30px 0;
+        min-height: 145px;
         justify-content: center;
         &.section1{
             max-width: 750px;
@@ -76,5 +79,8 @@ body{
     }
     p{
         margin-left: 16px;
+    }
+    .semibold{
+        font-weight: 500;
     }
 }   

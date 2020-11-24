@@ -1,12 +1,12 @@
 <div class="h-100 w-100" *ngIf="!isEntry else entry">
     <div class="fixed-top"><app-navbar></app-navbar></div>
     <div  id="container"  class="container-fluid col-md-12">
-        <h1 class="mat-headline">{{header}}</h1>
+        <h1 class="mat-headline subtitle">{{header}}</h1>
         <div id="content" [@routeAnimations]="prepareRoute(outlet)">
             <router-outlet #outlet="outlet"></router-outlet>
         </div>
     </div>    
-    <div class="bg-container col-md-12">
+    <div class="bg-container col-md-12 container-fluid">
         <div class="bg  img-fluid w-100 h-100"></div>
     </div>
 </div>

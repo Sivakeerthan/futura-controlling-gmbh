@@ -12,7 +12,7 @@ export class KontaktComponent implements OnInit {
 
   map: any;
 
-  constructor(public HeaderService:DynamicHeaderService) { }
+  constructor(public HeaderService: DynamicHeaderService) { }
 
   ngOnInit(): void {
     this.HeaderService.setTitle("Kontakt");
@@ -29,6 +29,26 @@ export class KontaktComponent implements OnInit {
         zoom: 18
       })
     });
+    this.addPoint(47.196594,7.413227);
+  }
+
+  addPoint(lat: number, lng: number) {
+    var vectorLayer = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: [new ol.Feature({
+          geometry: new ol.geom.Point(ol.proj.transform([lng, lat], 'EPSG:4326', 'EPSG:3857')),
+        })]
+      }),
+      style: new ol.style.Style({
+        image: new ol.style.Icon({
+          anchor: [0.5, 0.7],
+          anchorXUnits: "fraction",
+          anchorYUnits: "fraction",
+          src: "assets/futura-pin.png"
+        })
+      })
+    });
+    this.map.addLayer(vectorLayer);
   }
 
 }
