@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Category } from './models/Category';
 import { Post } from './models/Post';
+import { Tag } from './models/Tag';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ import { Post } from './models/Post';
 export class WordpressService {
 
   private Categories:Category[] = new Array<Category>();
+  private Tags:Tag[] = new Array<Tag>();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -32,11 +34,26 @@ export class WordpressService {
     }));    
   }
 
+  public GetTags() : Observable<boolean>
+  {
+    console.log('Getting Tags...');
+    return this.httpClient.get<Category[]>(environment.wpAPIUrl+'/tags').pipe(map((res:any[])=> {
+      var i = 0;
+      res.forEach(element => {
+        if(element != null)
+        {
+          this.Categories[i] = new Category(element.id,element.name);
+          i++;
+        }
+      });
+
+      return (res.length > 0);
+    }));    
+  }
+
   public GetPosts(page:string): Observable<Post[]>
   {    
-    console.log('Getting Posts...');
     let PageCategory:Category;
-    console.log(this.Categories);
     if(this.Categories.length > 0) 
     {
       PageCategory = this.Categories.find(element => element.Name == page);   
@@ -54,9 +71,37 @@ export class WordpressService {
 
   private DoRequest(params:string): Observable<Post[]>
   {
-    console.log("Sending Request: "+environment.wpAPIUrl+params);
+    console.log("Requesting To: "+environment.wpAPIUrl+params);
+    return this.httpClient.get<Post[]>(environment.wpAPIUrl+params).pipe(map((res:any[])=>{
+        var arr:Post[] = new Array<Post>();
+        var i = 0;
+        res.forEach(element=>{
+          arr[i] = {
+            ID: element.id,
+            Title: element.title.rendered,
+            Content: element.content.rendered,
+            Tags: this.AssignTags(element.tags)
+          };
+          i++;
+        });
+        return arr;
+    }));
+  }
 
-    return this.httpClient.get<Post[]>(environment.wpAPIUrl+params);
+  private AssignTags(tags:any[]) : Tag[]
+  {
+    let ClassTags:Tag[] = new Array<Tag>();
+    var i = 0;
+    tags.forEach(tag=>{
+       var currTag = this.Tags.find(element => element.ID = tag.id);
+       if(tag != null)
+       {
+          ClassTags[i] = currTag;
+          i++;
+       }
+    });
+
+    return ClassTags;
   }
 
 }

@@ -17,7 +17,9 @@ export class LobukoComponent implements OnInit {
 
   ngOnInit(): void {  
       this.HeaderService.setTitle("Lohnbuchkontrollen");
-      this.WPService.GetPosts('LoBuKo').subscribe(res=> this.Posts = res);
+      this.WPService.GetPosts('LoBuKo').subscribe(arr=> {
+        this.Posts = arr;
+      });
   }
 
 }
