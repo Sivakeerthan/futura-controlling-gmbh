@@ -15,8 +15,9 @@ export class WordpressService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public GetCategories() : Promise<boolean>
+  public GetCategories() : Observable<boolean>
   {
+    console.log('Getting Categories...');
     return this.httpClient.get<Category[]>(environment.wpAPIUrl+'/categories').pipe(map((res:any[])=> {
       var i = 0;
       res.forEach(element => {
@@ -28,11 +29,12 @@ export class WordpressService {
       });
 
       return (res.length > 0);
-    })).toPromise();    
+    }));    
   }
 
   public GetPosts(page:string): Observable<Post[]>
   {    
+    console.log('Getting Posts...');
     let PageCategory:Category;
     console.log(this.Categories);
     if(this.Categories.length > 0) 

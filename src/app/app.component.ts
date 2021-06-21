@@ -29,8 +29,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.isEntry = (nav.url == '/' || nav.urlAfterRedirects == '/');
       }
     });
-
-    this.WordPressService.GetCategories().then(res=>console.log(res),err=>console.error(err));
   }
 
   ngAfterViewInit() {
