@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ChangeDetectorRef, ChangeDetectionStr
 import { DynamicHeaderService } from './common/dynamic-header.service';
 import { slideInAnimation } from './common/animations';
 import { Router, NavigationEnd, RouterOutlet, NavigationError } from '@angular/router';
+import { WordpressService } from './common/wordpress/wordpress.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   public isEntry: boolean = false;
 
   constructor(public HeaderService: DynamicHeaderService,
+    public WordPressService: WordpressService,
     public cdr: ChangeDetectorRef,
     private Router: Router) { }
 
@@ -27,6 +29,8 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.isEntry = (nav.url == '/' || nav.urlAfterRedirects == '/');
       }
     });
+
+    this.WordPressService.GetCategories().then(res=>console.log(res),err=>console.error(err));
   }
 
   ngAfterViewInit() {
@@ -36,7 +40,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.header = val;
       }, 0);
     });
-
   }
 
   prepareRoute(outlet: RouterOutlet) {

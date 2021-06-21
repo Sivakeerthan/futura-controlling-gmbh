@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  jsonUrl:  "../../assets/employees/employees.json"
+  jsonUrl:  "../../assets/employees/employees.json",
+  wpAPIUrl: "http://127.0.0.1:8000/wp-json/wp/v2"
 };
 
 /*

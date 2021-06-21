@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DynamicHeaderService } from '../common/dynamic-header.service';
+import { Post } from '../common/wordpress/models/Post';
+import { WordpressService } from '../common/wordpress/wordpress.service';
 
 declare var ol: any;
 
@@ -11,11 +13,15 @@ declare var ol: any;
 export class KontaktComponent implements OnInit {
 
   map: any;
+  private Posts:Post[];
 
-  constructor(public HeaderService: DynamicHeaderService) { }
+  constructor(public HeaderService: DynamicHeaderService,
+              public WPService: WordpressService) { }
 
   ngOnInit(): void {
     this.HeaderService.setTitle("Kontakt");
+
+    this.WPService.GetPosts("Kontakt").subscribe(res=> this.Posts = res);
 
     this.map = new ol.Map({
       target: 'map',
