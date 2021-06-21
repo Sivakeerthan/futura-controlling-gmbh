@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 $md-primarypalette: (
@@ -103,20 +104,20 @@ $md-errorpalette: (
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat-core();
+@include mat.core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$default-primary: mat-palette($md-primarypalette);
-$default-accent:  mat-palette($md-accentpalette, A200, A100, A400);
+$default-primary: mat.define-palette($md-primarypalette);
+$default-accent:  mat.define-palette($md-accentpalette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$default-warn:    mat-palette($md-errorpalette);
+$default-warn:    mat.define-palette($md-errorpalette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as `color` or `typography`.
-$default-theme: mat-light-theme((
+$default-theme: mat.define-light-theme((
   color: (
     primary: $default-primary,
     accent: $default-accent,
@@ -127,18 +128,18 @@ $default-theme: mat-light-theme((
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include angular-material-theme($default-theme);
+@include mat.all-component-themes($default-theme);
 
 // Sass color vars
-$primary: mat-color($default-primary);
-$primary-dark: mat-color($md-primarypalette,800);
-$accent: mat-color($default-accent);
-$warn: mat-color($default-warn);
+$primary: mat.get-color-from-palette($default-primary);
+$primary-dark: mat.get-color-from-palette($md-primarypalette,800);
+$accent: mat.get-color-from-palette($default-accent);
+$warn: mat.get-color-from-palette($default-warn);
 
 // CSS4 vars
 :root {
-    --color-primary: #{mat-color($default-primary)};
-    --color-primary-dark: #{mat-color($md-primarypalette,800)};
-    --color-accent: #{mat-color($default-accent)};
-    --color-warn: #{mat-color($default-warn)};
+    --color-primary: #{mat.get-color-from-palette($default-primary)};
+    --color-primary-dark: #{mat.get-color-from-palette($md-primarypalette,800)};
+    --color-accent: #{mat.get-color-from-palette($default-accent)};
+    --color-warn: #{mat.get-color-from-palette($default-warn)};
 }
