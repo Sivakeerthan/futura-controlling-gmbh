@@ -1,4 +1,4 @@
-<mat-card class="primary col-sm-3">
+<!-- <mat-card class="primary col-sm-3">
     <mat-card-header>
         <mat-card-title>Kontakt</mat-card-title>    
     </mat-card-header>
@@ -21,8 +21,23 @@
             Mo-Fr 08:00 - 12:00 Uhr und 13:30 - 17:00 Uhr
         </p>
     </mat-card-content>
-</mat-card>
+</mat-card> -->
 
-<mat-card class="container-fluid col-lg-7 col-md-12">
+<div *ngFor="let post of Posts">
+    <mat-card [ngClass]="WPUtil.GetClasses(post.Tags)" [attr.id]="post.Title">
+        <mat-card-header>
+            <mat-card-title>{{post.Title}}</mat-card-title>
+        </mat-card-header>
+        <div *ngIf="!WPUtil.ContainsTag(post.Tags, 'collapsible'); else collapsible;">
+            <mat-card-content [innerHTML]="post.Content">
+            </mat-card-content>
+        </div>
+        <ng-template #collapsible>
+            <app-collapsible-card [page]="this.Page" [post]="post" ></app-collapsible-card>
+        </ng-template>
+    </mat-card>
+</div>
+
+<mat-card id="map-card" class="container-fluid col-lg-7 col-md-12">
     <div id="map" class="map"></div>
 </mat-card>

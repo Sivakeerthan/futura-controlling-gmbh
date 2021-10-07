@@ -1,7 +1,12 @@
+// Responsive-Layout Breakpoints
+$phone: 640px;
+$tablet: 768px;
+$desktop: 1024px;
+
 body{    
     overflow: hidden;
     padding: 0;
-}
+}   
 .subtitle{
     font-weight: 500; //Medium
     position: fixed;
@@ -16,10 +21,33 @@ body{
     left: 0;
     z-index:1;
     height: 95%;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: hidden;
+    @media screen and (max-height: 400px) {
+        -ms-overflow-style: auto; /* for Internet Explorer, Edge */
+        scrollbar-width: auto; /* for Firefox */
+        overflow-y: auto;
+    }
 }
+
+#container::-webkit-scrollbar{
+    display: none;
+    @media screen and (max-height: 400px) {
+        display: block;
+    }
+}
+
 #content{
     margin-top: 10vh;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    @media screen and (max-height: 400px) {
+        -ms-overflow-style: auto; /* for Internet Explorer, Edge */
+        scrollbar-width: auto; /* for Firefox */
+    }
 }
+
 
 //Preload background-image
 .bg::after{
@@ -51,7 +79,7 @@ body{
         background-image: url('../assets/bg.jpg');
         background-position: center;
         background-repeat: no-repeat; 
-        background-size: 150%;
+        background-size: cover;
         background-attachment: fixed;
         filter: blur(6px) contrast(50%);
         transform: scale(1.1);
@@ -68,9 +96,15 @@ body{
         justify-content: center;
         &.section1{
             max-width: 750px;
+            @media screen and (max-width: $phone) {
+                width: 100%;
+            }
         }
         &.section2{
             max-width: 430px;
+            @media screen and (max-width: $phone) {
+                width: 100%;
+            }
         }
     }
     button:focus{
@@ -82,4 +116,5 @@ body{
     .semibold{
         font-weight: 500;
     }
-}   
+}
+

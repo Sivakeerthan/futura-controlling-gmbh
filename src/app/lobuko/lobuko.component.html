@@ -1,6 +1,6 @@
 <div id="lobuko" class="row">
     <!-- <app-lobuko></app-lobuko> -->
-    <mat-card class="col section2 primary">
+    <!-- <mat-card class="col section2 primary">
         <mat-card-header>
             <mat-card-title>Lohnbuchkontrollen</mat-card-title>    
         </mat-card-header>
@@ -32,6 +32,22 @@
                 </li>
             </ul>
         </mat-card-content>
-    </mat-card>
+    </mat-card> -->
+    <div *ngFor="let post of Posts;">
+        <mat-card [ngClass]="WPUtil.GetClasses(post.Tags)" [attr.id]="post.Title">
+            <mat-card-header>
+                <mat-card-title>{{post.Title}}</mat-card-title>
+            </mat-card-header>
+            <div *ngIf="!WPUtil.ContainsTag(post.Tags, 'collapsible'); else collapsible;">
+                <mat-card-content [innerHTML]="post.Content">
+                </mat-card-content>
+            </div>
+            <ng-template #collapsible>
+                <app-collapsible-card [page]="this.Page" [post]="post" ></app-collapsible-card>
+            </ng-template>
+        </mat-card>
+    </div>
 </div>
+
+
 

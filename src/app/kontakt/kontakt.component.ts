@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DynamicHeaderService } from '../common/dynamic-header.service';
 import { Post } from '../common/wordpress/models/Post';
+import { WordpressUtil } from '../common/wordpress/wordpress-util';
 import { WordpressService } from '../common/wordpress/wordpress.service';
 
 declare var ol: any;
@@ -12,16 +13,18 @@ declare var ol: any;
 })
 export class KontaktComponent implements OnInit {
 
-  map: any;
-  private Posts:Post[];
+  public map: any;
+  public Posts:Post[];
+  public Page:string = "Kontakt";
 
-  constructor(public HeaderService: DynamicHeaderService,
-              public WPService: WordpressService) { }
+  constructor(private HeaderService: DynamicHeaderService,
+              private WPService: WordpressService,
+              public  WPUtil : WordpressUtil) { }
 
   ngOnInit(): void {
     this.HeaderService.setTitle("Kontakt");
 
-    this.WPService.GetPosts("Kontakt").subscribe(res=> this.Posts = res);
+    this.WPService.GetPosts(this.Page).subscribe(res=> this.Posts = res);
 
     this.map = new ol.Map({
       target: 'map',
@@ -31,11 +34,11 @@ export class KontaktComponent implements OnInit {
         })
       ],
       view: new ol.View({
-        center: ol.proj.fromLonLat([7.413227, 47.196594]),
+        center: ol.proj.fromLonLat([7.412070, 47.196500]),
         zoom: 18
       })
     });
-    this.addPoint(47.196594,7.413227);
+    this.addPoint(47.196500,7.413070);
   }
 
   addPoint(lat: number, lng: number) {

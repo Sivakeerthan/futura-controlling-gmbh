@@ -37,12 +37,12 @@ export class WordpressService {
   public GetTags() : Observable<boolean>
   {
     console.log('Getting Tags...');
-    return this.httpClient.get<Category[]>(environment.wpAPIUrl+'/tags').pipe(map((res:any[])=> {
+    return this.httpClient.get<Tag[]>(environment.wpAPIUrl+'/tags').pipe(map((res:any[])=> {
       var i = 0;
       res.forEach(element => {
         if(element != null)
         {
-          this.Categories[i] = new Category(element.id,element.name);
+          this.Tags[i] = new Tag(element.id,element.name);
           i++;
         }
       });
@@ -54,11 +54,14 @@ export class WordpressService {
   public GetPosts(page:string): Observable<Post[]>
   {    
     let PageCategory:Category;
+    let ExpandedCategory:Category;
     if(this.Categories.length > 0) 
     {
       PageCategory = this.Categories.find(element => element.Name == page);   
+      ExpandedCategory = this.Categories.find(element => element.Name == 'Expanded'); 
 
-      let params = '/posts?categories='+PageCategory.ID.toString();
+      // GET without expansions
+      let params = '/posts?categories='+PageCategory.ID.toString()+'&categories_exclude='+ExpandedCategory.ID.toString();
     
       return this.DoRequest(params);
     }
@@ -67,6 +70,26 @@ export class WordpressService {
       return throwError("The Categories haven't been defined yet!");
     } 
       
+  }
+
+  public GetExpandedPosts(page:string) : Observable<Post[]>
+  {
+    let PageCategory:Category;
+    let ExpandedCategory:Category;
+    if(this.Categories.length > 0) 
+    {
+      PageCategory = this.Categories.find(element => element.Name == page);
+      ExpandedCategory = this.Categories.find(element => element.Name == 'Expanded');   
+
+      let params = '/posts?categories='+PageCategory.ID.toString()+'&categories='+ExpandedCategory.ID.toString();
+    
+      return this.DoRequest(params);
+    }
+    else
+    {
+      return throwError("The Categories haven't been defined yet!");
+    } 
+
   }
 
   private DoRequest(params:string): Observable<Post[]>
@@ -79,6 +102,7 @@ export class WordpressService {
           arr[i] = {
             ID: element.id,
             Title: element.title.rendered,
+            Slug: element.slug,
             Content: element.content.rendered,
             Tags: this.AssignTags(element.tags)
           };
@@ -92,9 +116,10 @@ export class WordpressService {
   {
     let ClassTags:Tag[] = new Array<Tag>();
     var i = 0;
+
     tags.forEach(tag=>{
-       var currTag = this.Tags.find(element => element.ID = tag.id);
-       if(tag != null)
+       var currTag = this.Tags.find(element => element.ID == tag);
+       if(currTag != null)
        {
           ClassTags[i] = currTag;
           i++;

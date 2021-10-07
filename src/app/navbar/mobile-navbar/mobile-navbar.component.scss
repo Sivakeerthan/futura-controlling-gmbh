@@ -1,0 +1,56 @@
+#logo{
+    border-radius: 4px;
+    height: 36px;
+    padding: 2px;
+    cursor: pointer;
+    outline: none;
+    img{
+        height: 100%;
+    }
+}
+
+.mat-toolbar{
+    position: fixed;
+    z-index: 2;    
+}
+
+.mat-button{
+    float: right;
+}
+
+
+
+.mat-sidenav-container{    
+    background-color: transparent;
+    height: 100%;
+    #container{
+        padding: 50px 0; 
+        color: white;
+        position: absolute;
+        top: 5%;
+        left: 0;
+        z-index:1;
+        height: 100%;
+        -ms-overflow-style: auto; /* for Internet Explorer, Edge */
+        scrollbar-width: auto; /* for Firefox */
+        overflow-y: auto;
+    }
+
+    .mat-sidenav-content{
+        height: 100%;
+    }
+    
+    .mobile-content{
+        margin-top: 10vh;
+        -ms-overflow-style: auto; /* for Internet Explorer, Edge */
+        scrollbar-width: auto; /* for Firefox */
+        background-color: transparent;
+    }
+}
+
+.subtitle{
+    font-weight: 500; //Medium
+    position: fixed;
+    top: 10%;
+    padding-left: 5px;
+}

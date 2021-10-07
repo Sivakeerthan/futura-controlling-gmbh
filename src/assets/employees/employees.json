@@ -16,12 +16,21 @@
         "ImgPath":   "./assets/employees/sa.jpg"
     },
     {                           
-        "FirstName": "Sandy",
-        "LastName":  "Harbas",
-        "Position":  "Lohnbuchkontrolleur",
-        "Education": ["Kaufmann EFZ"],
-        "Hobbies":   ["Fussball", "Familie", "Freunde"],
-        "ImgPath":   "./assets/employees/sh.jpg"
+        "FirstName": "Sarah",
+        "LastName":  "Singh",
+        "Position":  "Lohnbuchkontrolleurin",
+        "Education": ["Kauffrau EFZ"],
+        "Hobbies":   ["Reisen", "Schreiben", "Freunde & Familie"],
+        "ImgPath":   "./assets/employees/ss.jpg"
+                                  
+    },
+    {                           
+        "FirstName": "Valérie",
+        "LastName":  "Jeanguenin",
+        "Position":  "Lohnbuchkontrolleurin",
+        "Education": ["Kauffrau EFZ"],
+        "Hobbies":   ["Rennen", "Kino", "Lesen"],
+        "ImgPath":   "./assets/employees/vj.jpg"
                                   
     }
 ]

@@ -9,7 +9,7 @@ import { LobukoComponent } from './lobuko/lobuko.component';
 import { WordpressResolver } from './common/wordpress/wordpress.resolver';
 
 const routes: Routes = [
-  {path: '', component: MainComponent, resolve: {pageData: WordpressResolver}},
+  {path: '', component: MainComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'EntryPage'}},
   {path: 'home', component: HomeComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'HomePage'}},
   {path: 'lobuko', component: LobukoComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'LobukoPage'}},
   {path: 'beratung-treuhand', component: ServicesComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'ServicesPage'}},

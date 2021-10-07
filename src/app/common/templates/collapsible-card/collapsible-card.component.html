@@ -1,0 +1,11 @@
+<div *ngIf="this.Collapsed; else expanded">
+    <mat-card-content [innerHTML]="this.post.Content">
+    </mat-card-content>
+</div>
+<ng-template #expanded>
+    <mat-card-content [innerHTML]="WPUtil.GetExpandedContent(ExpandedPosts, post.Slug)">
+    </mat-card-content>
+</ng-template>
+<mat-card-actions>
+    <button mat-icon-button (click)="this.Collapsed = !this.Collapsed"> <mat-icon> {{this.Collapsed ? "expand_more" : "expand_less"}} </mat-icon> </button>
+</mat-card-actions>

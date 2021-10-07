@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicHeaderService } from '../common/dynamic-header.service';
 import { Post } from '../common/wordpress/models/Post';
+import { WordpressUtil } from '../common/wordpress/wordpress-util';
 import { WordpressService } from '../common/wordpress/wordpress.service';
 
 @Component({
@@ -10,14 +11,16 @@ import { WordpressService } from '../common/wordpress/wordpress.service';
 })
 export class HomeComponent implements OnInit {
 
-  private Posts:Post[];
+  public Posts:Post[];
+  public Page:string = 'Home';
 
-  constructor(public WPService:WordpressService, 
-    public HeaderService: DynamicHeaderService) { }
+  constructor(public  WPUtil:WordpressUtil,
+              private WPService:WordpressService, 
+              private HeaderService: DynamicHeaderService) { }
 
   ngOnInit(): void {
     this.HeaderService.setTitle("Wilkommen bei futura controlling GmbH!");
-    this.WPService.GetPosts('Home').subscribe(res=> this.Posts = res);
+    this.WPService.GetPosts(this.Page).subscribe(res=> this.Posts = res);
   }
   
 }
