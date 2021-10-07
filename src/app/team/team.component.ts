@@ -29,7 +29,6 @@ export class TeamComponent implements OnInit {
 
   OnResize(event){
     if(this.employees != null) this.breakpoint = (event.target.innerWidth <= 1080) ? 1 : this.employees.length;
-    console.log("Resized: "+this.breakpoint);
   }
 
 }

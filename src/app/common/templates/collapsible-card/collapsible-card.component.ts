@@ -23,9 +23,6 @@ export class CollapsibleCardComponent implements OnInit {
     this.WPService.GetExpandedPosts(this.page).subscribe(arr=> {
       this.ExpandedPosts = arr;
     });
-
-    console.log("Post:");
-    console.log(this.post);
   }
 
 }

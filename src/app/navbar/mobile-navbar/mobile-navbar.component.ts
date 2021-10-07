@@ -22,9 +22,7 @@ export class MobileNavbarComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit(): void {
-    console.log("header:"+this.header);
-  }
+  ngOnInit(): void { }
 
   toggleNav(){
     this.toggled = !this.toggled;

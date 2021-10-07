@@ -20,7 +20,7 @@ export class WordpressResolver implements Resolve<boolean> {
       this.WordPressService.GetCategories(),
       this.WordPressService.GetTags()
     ]).pipe(map(
-          res=>{console.log(res); return true;}, 
+          res=>{return true;}, 
           err=>{console.error(err); return false;}
         ));
   }

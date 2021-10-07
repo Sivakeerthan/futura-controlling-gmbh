@@ -19,7 +19,6 @@ export class WordpressService {
 
   public GetCategories() : Observable<boolean>
   {
-    console.log('Getting Categories...');
     return this.httpClient.get<Category[]>(environment.wpAPIUrl+'/categories').pipe(map((res:any[])=> {
       var i = 0;
       res.forEach(element => {
@@ -36,7 +35,6 @@ export class WordpressService {
 
   public GetTags() : Observable<boolean>
   {
-    console.log('Getting Tags...');
     return this.httpClient.get<Tag[]>(environment.wpAPIUrl+'/tags').pipe(map((res:any[])=> {
       var i = 0;
       res.forEach(element => {
@@ -94,7 +92,6 @@ export class WordpressService {
 
   private DoRequest(params:string): Observable<Post[]>
   {
-    console.log("Requesting To: "+environment.wpAPIUrl+params);
     return this.httpClient.get<Post[]>(environment.wpAPIUrl+params).pipe(map((res:any[])=>{
         var arr:Post[] = new Array<Post>();
         var i = 0;

@@ -25,9 +25,4 @@ export class LobukoComponent implements OnInit {
       });
   }
 
-  public temp(post:Post): string{
-    console.log(post);
-    return "";
-  }
-
 }
