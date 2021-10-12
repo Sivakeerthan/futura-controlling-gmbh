@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <div matRipple  class="col-xsm" [routerLink]="'/home'" id="logo">
+        <div matRipple  class="col-xsm" [routerLink]="'/home'" (click)="toggled ? toggled = false : toggled = false" id="logo">
             <img src="assets\futura-controlling-GmbH-cmyk.png" alt="FuturaControllingGmbh"/>
         </div>
         <div class="col float-right">        
@@ -18,9 +18,10 @@
                         [opened]="toggled"
                         (closedStart)="onClose()">
         <mat-nav-list>
-        <a mat-list-item routerLink="/home">Home</a>
+        <!-- <a mat-list-item routerLink="/home">Home</a> -->
         <a mat-list-item routerLink="/lobuko">Lohnbuchkontrollen</a>
         <!-- <a mat-list-item routerLink='/about'>Über Uns</a> -->
+        <a mat-list-item routerLink="/information">Informationen</a>
         <a mat-list-item routerLink="/kontakt">Kontakt</a>
         </mat-nav-list>
     </mat-sidenav>

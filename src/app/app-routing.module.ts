@@ -7,6 +7,7 @@ import { ServicesComponent } from './services/services.component';
 import { TeamComponent } from './team/team.component';
 import { LobukoComponent } from './lobuko/lobuko.component';
 import { WordpressResolver } from './common/wordpress/wordpress.resolver';
+import { InformationComponent } from './information/information.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'EntryPage'}},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'buchhaltung', redirectTo: 'beratung-treuhand/#buchhaltung', pathMatch: 'full'},
   {path: 'about', component: TeamComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'TeamPage'}},
   {path: 'kontakt', component: KontaktComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'KontaktPage'}},
+  {path: 'information', component: InformationComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'InfoPage'}},
   {path: '**', redirectTo: '/', pathMatch: 'full'}
 ];
 

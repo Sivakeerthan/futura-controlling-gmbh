@@ -6,17 +6,19 @@
         </div>
       </div>
       <div class="col">
-        <div [@btnToggled]='toggled' class="nav-items float-md-left">
+        <!-- <div [@btnToggled]='toggled' class="nav-items float-md-left"> -->
+        <div class="nav-items float-md-left">
           <button mat-button [routerLink]="'/lobuko'">Lohnbuchkontrollen</button>
           <!-- <button mat-button [routerLink]="'/about'">Über Uns</button> -->
+          <button mat-button [routerLink]="'/information'">Informationen</button>
           <button mat-button [routerLink]="'/kontakt'">Kontakt</button>
         </div>
-        <div class="float-right">        
+        <!-- <div class="float-right">        
           <button mat-button (click)="toggleNav()">
               <mat-icon *ngIf="!toggled">menu</mat-icon>
               <mat-icon *ngIf="toggled">close</mat-icon>
           </button>
-        </div>
+        </div> -->
       </div>
     </mat-toolbar-row>
 </mat-toolbar>

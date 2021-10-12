@@ -26,6 +26,7 @@ import { RouterModule } from '@angular/router';
 import { TeamComponent } from './team/team.component';
 import { CollapsibleCardComponent } from './common/templates/collapsible-card/collapsible-card.component';
 import { MobileNavbarComponent } from './navbar/mobile-navbar/mobile-navbar.component';
+import { InformationComponent } from './information/information.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MobileNavbarComponent } from './navbar/mobile-navbar/mobile-navbar.comp
     ServicesComponent,
     TeamComponent,
     CollapsibleCardComponent,
-    MobileNavbarComponent
+    MobileNavbarComponent,
+    InformationComponent
   ],
   imports: [
     CommonModule,

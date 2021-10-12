@@ -27,7 +27,13 @@ body{
     @media screen and (max-height: 400px) {
         -ms-overflow-style: auto; /* for Internet Explorer, Edge */
         scrollbar-width: auto; /* for Firefox */
-        overflow-y: auto;
+        overflow-y: auto;       
+    }
+
+    @media screen and (max-width: $phone) {
+        width: 100%;
+        padding: 10%;
+        vertical-align: center;
     }
 }
 
