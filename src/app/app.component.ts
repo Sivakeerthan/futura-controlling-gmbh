@@ -30,6 +30,8 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
       this._mobileQueryListener = () => cdr.detectChanges();
       this.mobileQuery.addEventListener('change',this._mobileQueryListener);
     }
+
+
   ngOnDestroy(){
     this.mobileQuery.removeEventListener('change',this._mobileQueryListener);
   }

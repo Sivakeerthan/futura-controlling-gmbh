@@ -67,9 +67,14 @@ export const slideInAnimation =
 /*---------------------------------------------------------------------------------*/
   export const simpleFadeAnimation =
   trigger('simpleFadeAnimation', [
-    state('true', style({opacity: 1})),
-    state('false', style({opacity: 0})),
-    transition('true<=>false', [
-      animate('300ms')
-    ])
+    state('in', style({opacity: 1})),
+    transition(':enter', [
+      style({opacity: 1}),
+      animate(3000)
+    ]),
+    transition(':leave',[
+      style({opacity: 0}),
+      animate(3000),
+    ]
+    )
   ]);

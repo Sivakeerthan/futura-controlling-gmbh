@@ -11,12 +11,12 @@ import { InformationComponent } from './information/information.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'EntryPage'}},
-  {path: 'home', component: HomeComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'HomePage'}},
+  {path: 'home', redirectTo: '/', pathMatch: 'full' /*component: HomeComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'HomePage'} */},
   {path: 'lobuko', component: LobukoComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'LobukoPage'}},
-  {path: 'beratung-treuhand', component: ServicesComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'ServicesPage'}},
-  {path: 'loadm', redirectTo: 'beratung-treuhand/#loadm', pathMatch: 'full'},
-  {path: 'buchhaltung', redirectTo: 'beratung-treuhand/#buchhaltung', pathMatch: 'full'},
-  {path: 'about', component: TeamComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'TeamPage'}},
+  {path: 'beratung-treuhand', redirectTo: '/', pathMatch: 'full' /* component: ServicesComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'ServicesPage'}*/},
+  {path: 'loadm', redirectTo: '/', pathMatch: 'full' /*redirectTo: 'beratung-treuhand/#loadm', pathMatch: 'full'*/},
+  {path: 'buchhaltung', redirectTo: '/', pathMatch: 'full' /*redirectTo: 'beratung-treuhand/#buchhaltung', pathMatch: 'full'*/},
+  {path: 'about', redirectTo: '/', pathMatch: 'full' /*component: TeamComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'TeamPage'}*/},
   {path: 'kontakt', component: KontaktComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'KontaktPage'}},
   {path: 'information', component: InformationComponent, resolve: {pageData: WordpressResolver}, data: {animation: 'InfoPage'}},
   {path: '**', redirectTo: '/', pathMatch: 'full'}
